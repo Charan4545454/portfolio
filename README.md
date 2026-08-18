@@ -2,6 +2,8 @@
 
 A modern, interactive personal portfolio website built with React, Tailwind CSS, and Vite. Features a glassmorphism design with glowing gradient accents and live activity visualizers.
 
+**🌐 Live Demo:** [https://charan4545454.github.io/portfolio/](https://charan4545454.github.io/portfolio/)
+
 ## Features
 
 - 🎨 Modern glassmorphism UI with glowing effects
@@ -42,15 +44,11 @@ npm run preview
 
 ### GitHub Pages
 
-This project is configured to deploy to GitHub Pages at `https://github.com/Charan4545454/portfolio`
+This project is deployed to GitHub Pages at [https://charan4545454.github.io/portfolio/](https://charan4545454.github.io/portfolio/)
 
-#### Deploy Automatically
+#### Automatic Deployment with GitHub Actions
 
-```bash
-npm run deploy
-```
-
-This runs the build and pushes to GitHub Pages using the `gh` CLI.
+The project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically builds and deploys to GitHub Pages whenever code is pushed to the main branch.
 
 #### Manual Deployment
 
@@ -59,15 +57,20 @@ This runs the build and pushes to GitHub Pages using the `gh` CLI.
    npm run build
    ```
 
-2. Deploy the `dist` folder to GitHub Pages:
+2. Deploy the `dist` folder to the gh-pages branch:
    ```bash
-   gh pages deploy dist
+   npm run deploy
+   ```
+
+   Or manually:
+   ```bash
+   git push origin HEAD:gh-pages --force
    ```
 
 3. Enable GitHub Pages in your repository settings:
    - Go to Settings → Pages
-   - Set source to "Deploy from a branch"
-   - Select `gh-pages` branch and `/ (root)` as the publish directory
+   - Ensure source is set to "Deploy from a branch"
+   - Select `gh-pages` branch and `/` as the publish directory
 
 ## Project Structure
 
@@ -78,6 +81,10 @@ src/
 ├── main.jsx           # DOM mount point
 ├── index.css          # Tailwind directives
 └── assets/            # Static assets
+
+.github/
+└── workflows/
+    └── deploy.yml     # GitHub Actions deployment workflow
 ```
 
 ## Customization
@@ -95,6 +102,10 @@ Edit the data arrays in `src/Portfolio.jsx`:
 ### Styling
 
 The portfolio uses Tailwind CSS classes. Customize colors and spacing in `tailwind.config.js`.
+
+### Base Path
+
+The app is configured with a base path of `/portfolio/` for GitHub Pages. To use a different path or root domain, update the `base` property in `vite.config.js`.
 
 ## Available Scripts
 
